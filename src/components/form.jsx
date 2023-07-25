@@ -33,7 +33,7 @@ const Form = () => {
     }
   };
 
-//   console.log(state);
+  //   console.log(state);
 
   function changeFIrstName(e) {
     dispatch({ type: ACTIONS.ADD_FIRSTNAME, payload: e.target.value });
@@ -51,20 +51,39 @@ const Form = () => {
   return (
     <>
       <form>
-        <div style={{ marginBottom: "2em" }}>
-          <label htmlFor="firstName">first name</label>
-          <input
-            onInput={changeFIrstName}
-            type="text"
-            value={state.firstName}
-          />{" "}
-          <br />
-          <label htmlFor="firstName">first name</label>
-          <input onInput={changeLastName} type="text" value={state.lastName} />
+        <div
+          style={{
+            display: state.showNextParts ? "none" : "block",
+          }}
+        >
+          <div
+            style={{
+              marginBottom: "2em",
+            }}
+          >
+            <label htmlFor="firstName">first name</label>
+            <input
+              onInput={changeFIrstName}
+              type="text"
+              value={state.firstName}
+            />{" "}
+            <br />
+            <label htmlFor="firstName">first name</label>
+            <input
+              onInput={changeLastName}
+              type="text"
+              value={state.lastName}
+            />
+          </div>
+          <button onClick={handleSubmit}>next</button>
         </div>
-        <button onClick={handleSubmit}>next</button>
         {state.showNextParts ? (
-          <div style={{ marginBottom: "2em" }}>
+          <div
+            style={{
+              marginBottom: "2em",
+              display: state.showAll ? "none" : "block",
+            }}
+          >
             <label htmlFor="email">email</label>
             <input onInput={changeEmail} type="text" value={state.email} />{" "}
             <br />
